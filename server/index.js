@@ -16,15 +16,30 @@ app.get("/", (req, res) => {
   res.send("<h1>Hello world</h1>");
 });
 
+let users = [];
+
 io.on("connection", (socket) => {
   console.log(`${socket.id} user connected`);
+
+  //handles message
   socket.on("message", (data) => {
-    console.log(data)
+    console.log(data);
     io.emit("messageResponse", data);
   });
+
+  //User Joins the chat
+  socket.on("newUser", (data) => {
+    users.push(data);
+    io.emit("totalUsers", users);
+  });
+
+  //Disconnection
   socket.on("disconnect", () => {
-    //logs disconnect when user leave page
     console.log("User disconnected");
+
+    users=users.filter((user) => user.socketID !== socket.id);
+    io.emit("totalUsers", users);
+    socket.disconnect();
   });
 
   // socket.on('chat', (payload) => {
