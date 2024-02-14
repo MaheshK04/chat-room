@@ -1,16 +1,16 @@
 //imports
 const express = require("express");
-const { createServer } = require("http");
-const { Server } = require("socket.io");
-
 const app = express();
-const server = createServer(app);
-const PORT = 5000;
-const io = new Server(server, {
+const cors = require("cors");
+const http = require("http").Server(app);
+const PORT = 4000;
+const io = require("socket.io")(http, {
   cors: {
-    origin: "*",
+    origin: "http://localhost:3000",
   },
 });
+
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("<h1>Hello world</h1>");
@@ -18,15 +18,13 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   console.log(`${socket.id} user connected`);
-
-  //logs disconnect when user leave page
-  socket.on("disconnect", () => {
-    console.log("User disconnected");
-  });
-
-  //logs the message to the console
   socket.on("message", (data) => {
-    console.log(data);
+    console.log(data)
+    io.emit("messageResponse", data);
+  });
+  socket.on("disconnect", () => {
+    //logs disconnect when user leave page
+    console.log("User disconnected");
   });
 
   // socket.on('chat', (payload) => {
@@ -34,6 +32,6 @@ io.on("connection", (socket) => {
   // })
 });
 
-server.listen(PORT, () => {
+http.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
