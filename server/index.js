@@ -8,6 +8,7 @@ const io = require("socket.io")(http, {
   cors: {
     origin: "*",
   },
+  transports: ["websocket"],
 });
 
 app.use(cors());
