@@ -5,21 +5,15 @@ const cors = require("cors");
 const http = require("http").Server(app);
 const PORT = 4000;
 const io = require("socket.io")(http, {
-  handlePreflightRequest: (req, res) => {
-    const headers = {
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      "Access-Control-Allow-Origin": req.headers.origin, //or the specific origin you want to give access to,
-      "Access-Control-Allow-Credentials": true,
-    };
-    res.writeHead(200, headers);
-    res.end();
+  cors: {
+    origin: "http://localhost:3000",
   },
 });
 
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("<h1>Hello world v2</h1>");
+  res.send("<h1>Hello world</h1>");
 });
 
 let users = [];
