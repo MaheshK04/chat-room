@@ -14,9 +14,9 @@ const ChatBody = ({ messages }) => {
   return (
     <>
       <header className="chat__mainHeader">
-        <p>Welcome {localStorage.getItem('userName')}!</p>
+        <p>Welcome {localStorage.getItem("userName")}!</p>
         <button className="leaveChat__btn" onClick={handleLeaveChat}>
-          LEAVE CHAT
+          LEAVE CHAT ⬅
         </button>
       </header>
 
@@ -38,10 +38,6 @@ const ChatBody = ({ messages }) => {
             </div>
           )
         )}
-
-        <div className="message__status">
-          <p>Someone is typing...</p>
-        </div>
       </div>
     </>
   );

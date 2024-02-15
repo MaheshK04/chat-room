@@ -17,7 +17,7 @@ const ChatFooter = ({ socket }) => {
     setMessage("");
   };
   return (
-    <div className="chat__footer" >
+    <div className="chat__footer">
       <form className="form" onSubmit={handleSendMessage}>
         <input
           type="text"
@@ -26,7 +26,7 @@ const ChatFooter = ({ socket }) => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <button className="sendBtn">SEND</button>
+        <button className="sendBtn">SEND ➤</button>
       </form>
     </div>
   );

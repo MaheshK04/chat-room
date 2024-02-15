@@ -26,7 +26,7 @@ const SignIn = ({ socket }) => {
           onChange={(e) => setUserName(e.target.value)}
         />
         <button type="button" onClick={handleSubmit}>
-          Join Chat
+          Join Chat💬
         </button>
       </div>
     </div>
