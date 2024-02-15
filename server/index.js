@@ -6,7 +6,7 @@ const http = require("http").Server(app);
 const PORT = 4000;
 const io = require("socket.io")(http, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chat-buzz.vercel.app/",
   },
 });
 
