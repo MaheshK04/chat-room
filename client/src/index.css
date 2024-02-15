@@ -162,6 +162,7 @@
     font-size: 15px;
 }
 
+
 .message__sender {
     background-color: rgb(21, 120, 201);
     color: white;
@@ -173,11 +174,14 @@
 }
 
 .message__chats>p {
-    font-size: 1px;
+    font-size: 12px;
+    color: rgb(253, 186, 0);
 }
 
 .sender__name {
     text-align: right;
+    color: orange;
+   
 }
 
 .message__status {
