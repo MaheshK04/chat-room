@@ -4,7 +4,7 @@ import socketIO from "socket.io-client";
 import SignIn from "./components/SignIn";
 
 
-const socket = socketIO.connect("http://localhost:4000");
+const socket = socketIO.connect("https://chat-room-server-coral.vercel.app/");
 function App() {
   return (
     <BrowserRouter>
