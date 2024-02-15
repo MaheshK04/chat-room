@@ -5,7 +5,7 @@ const cors = require("cors");
 const http = require("http").Server(app);
 const PORT = 4000;
 const io = require("socket.io")(http, {
-  ors: {
+  cors: {
     origin: "*",
     methods: ["*"],
     credentials: true,
