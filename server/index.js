@@ -5,10 +5,13 @@ const cors = require("cors");
 const http = require("http").Server(app);
 const PORT = 4000;
 const io = require("socket.io")(http, {
-  cors: {
+  ors: {
     origin: "*",
+    methods: ["*"],
+    credentials: true,
   },
-  transports: ["websocket"],
+  transports: ["websocket", "polling"],
+  allowEIO3: true,
 });
 
 app.use(cors());
