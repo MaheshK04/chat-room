@@ -18,7 +18,7 @@ const ChatPage = ({ socket }) => {
   }, [messages]);
   return (
     <div className="chat">
-      <ChatBar socket={socket} />
+      <ChatBar socket={socket}  />
       <div className="chat__main">
         <ChatBody messages={messages} lastMessage={lastMessage} />
         <ChatFooter socket={socket} />

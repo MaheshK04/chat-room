@@ -2,10 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 const ChatBar = ({ socket }) => {
-  const [users, setUsers] = useState([]);
+   const [users, setUsers] = useState([]);
   useEffect(() => {
     socket.on("totalUsers", (data) => setUsers(data));
   }, [socket, users]);
+  
   return (
     <div className="chat__sidebar">
       <h1>CHAT BUZZ</h1>
