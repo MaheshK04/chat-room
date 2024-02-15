@@ -5,13 +5,15 @@ const cors = require("cors");
 const http = require("http").Server(app);
 const PORT = 4000;
 const io = require("socket.io")(http, {
-  cors: {
-    origin: "*",
-    methods: ["*"],
-    credentials: true,
+  handlePreflightRequest: (req, res) => {
+    const headers = {
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      "Access-Control-Allow-Origin": req.headers.origin, //or the specific origin you want to give access to,
+      "Access-Control-Allow-Credentials": true,
+    };
+    res.writeHead(200, headers);
+    res.end();
   },
-  transports: ["websocket", "polling"],
-  allowEIO3: true,
 });
 
 app.use(cors());
@@ -40,7 +42,7 @@ io.on("connection", (socket) => {
   //Validates UserName
   socket.on("checkUserName", (userName) => {
     const isAvailable = !users.some((user) => user.userName === userName);
-    socket.emit("userNameAvailability" , isAvailable);
+    socket.emit("userNameAvailability", isAvailable);
   });
 
   //Disconnection
