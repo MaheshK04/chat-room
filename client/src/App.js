@@ -3,8 +3,7 @@ import ChatPage from "./components/ChatPage";
 import socketIO from "socket.io-client";
 import SignIn from "./components/SignIn";
 
-
-const socket = socketIO.connect("https://chat-room-server-coral.vercel.app/");
+const socket = socketIO.connect("http://localhost:4000");
 function App() {
   return (
     <BrowserRouter>
@@ -15,7 +14,6 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
-    
   );
 }
 

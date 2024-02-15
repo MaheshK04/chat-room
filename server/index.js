@@ -6,14 +6,14 @@ const http = require("http").Server(app);
 const PORT = 4000;
 const io = require("socket.io")(http, {
   cors: {
-    origin: "https://chat-buzz.vercel.app/",
+    origin: "*",
   },
 });
 
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("<h1>Hello world</h1>");
+  res.send("<h1>Hello world v2</h1>");
 });
 
 let users = [];
