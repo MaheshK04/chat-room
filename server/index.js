@@ -23,7 +23,7 @@ io.on("connection", (socket) => {
 
   //handles message
   socket.on("message", (data) => {
-    console.log(data);
+    //console.log(data);
     io.emit("messageResponse", data);
   });
 
@@ -33,11 +33,17 @@ io.on("connection", (socket) => {
     io.emit("totalUsers", users);
   });
 
+  //Validates UserName
+  socket.on("checkUserName", (userName) => {
+    const isAvailable = !users.some((user) => user.userName === userName);
+    socket.emit("userNameAvailability" , isAvailable);
+  });
+
   //Disconnection
   socket.on("disconnect", () => {
     console.log("User disconnected");
 
-    users=users.filter((user) => user.socketID !== socket.id);
+    users = users.filter((user) => user.socketID !== socket.id);
     io.emit("totalUsers", users);
     socket.disconnect();
   });

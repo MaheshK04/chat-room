@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useRef } from "react";
 
 const ChatFooter = ({ socket }) => {
   const [message, setMessage] = useState("");
+  const inputRef = useRef(null);
 
   const handleSendMessage = (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ const ChatFooter = ({ socket }) => {
       });
     }
     setMessage("");
+    inputRef.current.focus();
   };
   return (
     <div className="chat__footer">
@@ -24,6 +27,7 @@ const ChatFooter = ({ socket }) => {
           placeholder="Write message"
           className="message"
           value={message}
+          ref={inputRef}
           onChange={(e) => setMessage(e.target.value)}
         />
         <button className="sendBtn">SEND ➤</button>

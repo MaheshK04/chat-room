@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import ChatBar from "./ChatBar";
 import ChatBody from "./ChatBody";
-import ChatFooter from './ChatFooter'
+import ChatFooter from "./ChatFooter";
 import '../index.css'
 
 const ChatPage = ({ socket }) => {
