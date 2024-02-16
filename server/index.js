@@ -14,7 +14,7 @@ const io = require("socket.io")(http, {
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("<h1>Hello world</h1>");
+  res.send("<h1>Hello world Version 2</h1>");
 });
 
 let users = [];
